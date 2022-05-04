@@ -1,7 +1,5 @@
 from flask import Flask
 from flask import request
-from socket import gethostname
-from socket import gethostbyname
 
 from API.API import API
 
@@ -15,5 +13,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    IP: str = gethostbyname(gethostname())
-    app.run(host=IP, port=105, debug=True)
+    app.run(host="0.0.0.0", debug=True)
