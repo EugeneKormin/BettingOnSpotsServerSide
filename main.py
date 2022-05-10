@@ -1,8 +1,6 @@
 from flask import Flask
 from flask import request
-import os
 
-print(f"current_path: {os.getcwd()}")
 from API.API import API
 from Train.TrainModel import TrainModel
 
