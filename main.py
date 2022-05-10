@@ -14,7 +14,7 @@ def predict():
 
 
 @app.route('/api/v1.0/train', methods=['GET'])
-def predict():
+def train():
     TrainModel()
     return "model successfully trained"
 

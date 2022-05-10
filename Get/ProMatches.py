@@ -10,7 +10,6 @@ from numpy import hstack
 from numpy import ndarray
 
 from Factorize.SVD import SVD
-from Get.Variables import variables
 from Get.Variables import OFFSET
 from Save.SaveModel import SaveModel
 from Get.Scaler import Scaler
@@ -45,11 +44,11 @@ class ProMatches(SVD, SaveModel):
         return df_result_to_pred
 
     @classmethod
-    def __get_pro_matches(cls, df_truncated_teams_stats: DataFrame) -> DataFrame:
+    def __get_pro_matches(cls, OFFSET: int, df_truncated_teams_stats: DataFrame) -> DataFrame:
         def check_data() -> bool:
             match_date: datetime = datetime.fromisoformat(game.date)
             nowadays: datetime = datetime.now()
-            offset: datetime = nowadays - timedelta(days=variables.offset)
+            offset: datetime = nowadays - timedelta(days=OFFSET)
             return True if offset < match_date < (nowadays - timedelta(days=4)) else False
 
         result_df: DataFrame = DataFrame({})
@@ -70,7 +69,7 @@ class ProMatches(SVD, SaveModel):
 
     @property
     def current_matches_data(self) -> DataFrame:
-        df: DataFrame = self.__get_pro_matches(df_truncated_teams_stats=self.df_truncated_team_stats)
+        df: DataFrame = self.__get_pro_matches(OFFSET=OFFSET, df_truncated_teams_stats=self.df_truncated_team_stats)
         df_normalized: DataFrame = self.__scale_df(df=df, train=True, min_max_scaler=min_max_scaler)
         SaveModel(FILE_NAME="scaler", model=min_max_scaler)
         return df_normalized

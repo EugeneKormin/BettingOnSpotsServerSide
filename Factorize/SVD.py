@@ -7,6 +7,7 @@ from pandas import DataFrame
 from Get.Variables import PRINCIPLE_COMPONENTS
 from Get.TeamStats import TeamStats
 
+
 class SVD(TeamStats):
     def __init__(self):
         super(SVD, self).__init__()
