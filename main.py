@@ -2,21 +2,19 @@ from flask import Flask
 from flask import request
 
 from API.API import API
-from Train.TrainModel import TrainModel
 
 
 app = Flask(__name__)
 
 
-@app.route('/api/v1.0/predict', methods=['GET'])
+@app.route('/api/v1.0/predict_score', methods=['GET'])
 def predict():
-    return API(request).predict
+    return API(request=request).predict_score
 
 
-@app.route('/api/v1.0/train', methods=['GET'])
-def train():
-    TrainModel()
-    return "model successfully trained"
+@app.route('/api/v1.0/calculate_advance', methods=['GET'])
+def calculate_advance():
+    return API(request=request).calculate_advance
 
 
 if __name__ == '__main__':
