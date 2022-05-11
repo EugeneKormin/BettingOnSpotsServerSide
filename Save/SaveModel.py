@@ -9,5 +9,5 @@ class SaveModel(object):
 
     @classmethod
     def __save_model(cls, FILE_NAME: str, model: any) -> None:
-        with open(getcwd() + fr'\{FILE_NAME}.pickle', 'wb') as f:
+        with open(getcwd() + fr'\ML_algos\{FILE_NAME}.pickle', 'wb') as f:
             dump(model, f)
