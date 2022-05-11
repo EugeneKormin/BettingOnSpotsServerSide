@@ -33,7 +33,7 @@ class API(object):
             return str(PREDICTED_SCORE + 0.5)
 
     @property
-    def advance(self):
+    def calculated_advance(self):
         PARSED_ARG: str = self.__calculate_advance(request=self.__request)
         return PARSED_ARG
 
